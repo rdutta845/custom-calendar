@@ -100,8 +100,8 @@ var app = angular.module("calendarDemoApp", []);
 				for(var i=1;i<35;i++){
 					$(".day"+i).removeClass('inactive');
 				}
-				if($scope.selectedMonth<=curMonth){
-					console.log("inactive", $scope.selectedMonth, curMonth, curDay);
+				if($scope.selectedMonth<=curMonth && $scope.years[$scope.selectedYear]<=curYear){
+					console.log("inactive->", $scope.selectedMonth, curMonth, curDay, $scope.years[$scope.selectedYear], curYear);
 					for(var i=1; i<curDay; i++){
 						$(".day"+i).addClass('inactive');
 					}
@@ -145,7 +145,7 @@ var app = angular.module("calendarDemoApp", []);
 						$("#"+i).removeClass('inactive');
 					}
 				}
-
+				$scope.chkMnt($scope.selectedMonth);
 			}
 
 			$scope.chkDay = function(index){
