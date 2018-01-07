@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js">
+</script>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../css/calCSS.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="../javascript/calScript.js"></script>
+  
+<body>
+
+	<div ng-app="calendarDemoApp" ng-controller="calCntrl" class="container">
+
+    <input type="text" name="date" id="date" ng-model='dtpick' class="form-control" ng-disabled='true'>
+    
+    <p><button class="btn" type="button" ng-click="showDate()" id="clk"><i title="{{btnClk}}">Double click</i></button></p>
+    
+    <div class="row" ng-show='main'>
+    	<div>
+	    	<p><b>Return Date</b><span class="right"><i class="fa fa-close" title="close" ng-click="close()"></i></span></p>
+	    	<p>Show flexible dates<span class="btn-group"><button class="btn">Yes</button><button class="btn">No</button class="btn"></span></p>	
+	    </div>
+	    <div class="col-md-4">
+	    	<div>
+		    	<p><b>Year</b></p>
+		    	<span class="btn-group" ng-repeat="yr in years">
+		    		<button class="btn" id="yr{{$index}}" ng-click="chkYr($index)">{{yr}}</button>
+		    	</span>
+		    	<br><br><br>
+		    	<p><b>Month</b></p>
+		    	<span class="btn-group" ng-repeat="mnt in monthsIni(0)| limitTo:4">
+		    		<button class="btn" id="{{$index}}" ng-click="chkMnt($index)">{{mnt}}</button>
+		    	</span>
+		    	<br>
+		    	<span class="btn-group" ng-repeat="mnt in monthsIni(4)| limitTo:4">
+		    		<button class="btn" id="{{$index+4}}" ng-click="chkMnt($index+4)">{{mnt}}</button>
+		    	</span>
+		    	<br>
+		    	<span class="btn-group" ng-repeat="mnt in monthsIni(8)| limitTo:4">
+		    		<button class="btn" id="{{$index+8}}" ng-click="chkMnt($index+8)">{{mnt}}</button>
+		    	</span>
+		    </div>
+	    </div>
+	    
+	    <div class="col-md-8">
+	    	<div>
+	    		<p class="week-days"><b>Day</b></p>
+	    		<p>
+	    			<span ng-repeat="day in days" class="week-days">{{day}}</span>
+	    		</p>
+	    		<p class="btn-group">
+	    			<span ng-repeat="i in [0, 1 ,2 ,3 ,4, 5]">
+		    			<button  class="btn day{{day}}" ng-repeat="day in getDayCal(i) track by $index" ng-click="chkDay(day)" id="#day{{day}}"> 
+			    			<span ng-if="day<10">0{{day}}</span>
+			    			<span ng-if="day>=10">{{day}}</span>
+			    			<span ng-if="day=='NA'">__</span>
+		    			</button>
+		    			<br/>
+		    		</span>
+	    		</p>
+	    	</div>
+	    </div>
+	  </div>
+	</div>
+</body>
+</html>

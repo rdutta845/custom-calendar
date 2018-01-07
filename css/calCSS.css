@@ -1,0 +1,37 @@
+input{
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+.btn{
+  border-radius: 0px;
+  background-color: white;
+}
+#clk{
+  background-color: black;
+  color: white;
+}
+/*.row{
+  background-color: grey;
+}*/
+.active{
+  background-color: #cac5c5;
+}
+.inactive{
+  background-color: white;
+  pointer-events: none;
+  color:grey;
+}
+.week-days{
+  margin-right: 20px;
+  margin-left: 5px;
+}
+.fa-close{
+  cursor: pointer;
+  margin-left: 500px;
+  font-size: x-large;
+}
+.dayNA{
+  background-color: white;
+  pointer-events: none;
+  color:grey;
+}
